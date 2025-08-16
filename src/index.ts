@@ -1,27 +1,28 @@
-import express, { Request,  Response} from 'express';
+import express, { Request, Response } from "express";
 import cors from "cors";
 import { generateSeriousContent, generateInfiniteContent } from "./gemini";
 
 import { buildSeriousPrompt, buildInfinitePrompt } from "./prompts";
-
 
 const app = express();
 const PORT = 3001;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: [
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
+      "https://ketik-matic.mihdanadvani.my.id/",
+    ],
     credentials: true,
   })
 );
 
 app.use(express.json());
 
-app.get('/', (req: Request, res:Response) => {
-    res.send('Hello, World!');
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello, World!");
 });
-
-
 
 // Health check
 app.get("/health", (req, res) => {
